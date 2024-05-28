@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 295px;
+  justify-self: stretch;
+  align-items: center;
+
+  & div {
+    width: 6px;
+    height: 50px;
+    background-color: red;
+    border-radius: 100px;
+  }
+
+  & p {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    align-items: center;
+    word-break: break-all;
+  }
+}
