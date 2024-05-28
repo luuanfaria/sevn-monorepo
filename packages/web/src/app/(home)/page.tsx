@@ -1,9 +1,10 @@
+import { Adversiting } from '@/app/components/adversiting'
 import styles from './page.module.scss'
 
 export default function Home() {
   return (
-    <main>
-      <h1 className={styles.container}>Content</h1>
+    <main className={styles.container}>
+      <Adversiting />
     </main>
   )
 }

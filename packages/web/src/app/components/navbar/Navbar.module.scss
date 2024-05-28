@@ -25,7 +25,7 @@
   color: black;
   font-size: 23px;
   text-align: center;
-  position: absolute; /* Posiciona o título absolutamente */
-  left: 50%; /* Move o título para o centro horizontal */
-  transform: translateX(-50%); /* Ajusta o título para o centro horizontal */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
