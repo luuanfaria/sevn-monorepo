@@ -1,0 +1,31 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffbd14;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 12px;
+  color: white;
+  cursor: pointer;
+
+  &.disabled {
+    background-color: #ffbd14;
+    color: #ffbd14;
+    cursor: default;
+  }
+}
+
+.title {
+  color: black;
+  font-size: 23px;
+  text-align: center;
+  position: absolute; /* Posiciona o título absolutamente */
+  left: 50%; /* Move o título para o centro horizontal */
+  transform: translateX(-50%); /* Ajusta o título para o centro horizontal */
+}
