@@ -4,17 +4,16 @@ import Image from "next/image";
 
 interface Props {
   title: string
-  description: string
   image: string
   category: 'economia' | 'educação' | 'diversidade' | 'default';
 }
 
-export function Card({ title, description, image, category = 'default' }: Props) {
+export function Card({ title, image, category = 'default' }: Props) {
   return (
     <div className={styles.container}>
       <Image src={image} alt="" width={295} height={190} />
-      <Category text={title} category={category} />
-      <p>{description}</p>
+      <Category text={category} category={category} />
+      <p>{title}</p>
     </div>
   )
 }

@@ -19,18 +19,16 @@ routes.get('/api/secondary-articles', (req, res) => {
 })
 
 routes.get('/api/articles/:id', (req, res) => {
-  const articleId = req.params.id;
+  const articleId = parseInt(req.params.id);
   const articleDetails = readJSONFile('mainArticles.json');
-  const article = articleDetails[articleId];
+  const article = articleDetails.find((article: { id: number }) => article.id === articleId);
 
   if (article) {
-    console.log(article)
     res.json(article)
   } else {
-    console.log("Erro")
-
     res.status(404).send('Notícia não encontrada');
   }
 })
+
 
 export default routes

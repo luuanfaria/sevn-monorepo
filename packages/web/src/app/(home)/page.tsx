@@ -6,6 +6,7 @@ import { Card } from '../../components/card'
 import { Adversiting } from '@/components/adversiting'
 import { Category } from '@/components/ category'
 import styles from './Home.module.scss'
+import { api } from '@/data/api'
 
 interface Article {
   id: number;
@@ -27,13 +28,13 @@ export default function Home() {
 
   useEffect(() => {
     const fetchMainArticles = async () => {
-      const response = await fetch('http://localhost:3333/api/main-articles');
+      const response = await api('/main-articles');
       const data = await response.json();
       setMainArticles(data);
     };
 
     const fetchSecondaryArticles = async () => {
-      const response = await fetch('http://localhost:3333/api/secondary-articles');
+      const response = await api('/secondary-articles');
       const data = await response.json();
       setSecondaryArticles(data);
     };
@@ -51,7 +52,11 @@ export default function Home() {
           {mainArticles.slice(0, 1).map((article) => (
             <div key={article.id} className={styles.principalMain}>
               <Category text={article.category} category={article.category} />
-              <h1><Link href={`/noticia/${article.id}`}>{article.title}</Link></h1>
+              <h1>
+                <Link href={`/${article.id}`}>
+                  {article.title}
+                </Link>
+              </h1>
             </div>
           ))}
 
@@ -68,8 +73,7 @@ export default function Home() {
           {mainArticles.slice(1, 3).map((article) => (
             <div key={article.id} className={styles.secondaryContainer}>
               <Card 
-                title={article.category} 
-                description={article.description} 
+                title={article.title}
                 image={article.image}
                 category={article.category} 
               />
