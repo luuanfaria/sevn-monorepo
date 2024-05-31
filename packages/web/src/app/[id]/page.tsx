@@ -2,7 +2,7 @@
 import { Category } from "@/components/ category";
 import { Adversiting } from "../../components/adversiting";
 import styles from './Noticia.module.scss';
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "@/data/api";
 
@@ -16,21 +16,21 @@ interface Article {
 }
 
 export default function Noticia() {
-  const router = useRouter();
   const path = usePathname()
+  const id = path[1]
   const [article, setArticle] = useState<Article | null>(null);
 
   useEffect(() => {
-    if (path[1]) {
+    if (id) {
       const fetchArticle = async () => {
-        const response = await api(`/articles/${path[1]}`)
+        const response = await api(`/articles/${id}`)
         const data = await response.json()
         setArticle(data);
       }
 
       fetchArticle()
     }
-  }, [path[1]]);
+  }, [id]);
 
   if (!article) {
     return <div>Loading...</div>;

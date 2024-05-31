@@ -63,7 +63,9 @@ export default function Home() {
           <div className={styles.bulletsContainer}>
             <div className={styles.bulletsPrincipal}>
              {secondaryArticles.slice(0, 4).map((article) => (
-               <Bullet key={article.id} title={article.title} category={article.category} />
+              <Link key={article.id} href={`/${article.id}`}>
+               <Bullet title={article.title} category={article.category} />
+              </Link>
              ))}
             </div>
           </div>
@@ -72,14 +74,18 @@ export default function Home() {
         <div className={styles.secondary}>
           {mainArticles.slice(1, 3).map((article) => (
             <div key={article.id} className={styles.secondaryContainer}>
-              <Card 
-                title={article.title}
-                image={article.image}
-                category={article.category} 
-              />
+              <Link key={article.id} href={`/${article.id}`}>
+                <Card 
+                  title={article.title}
+                  image={article.image}
+                  category={article.category} 
+                />
+              </Link>
 
               {secondaryArticles.filter((secArticle) => secArticle.category === article.category).slice(0, 2).map((secArticle) => (
-                <Bullet key={secArticle.id} title={secArticle.title} category={secArticle.category} />
+                <Link key={secArticle.id} href={`/${article.id}`}>
+                  <Bullet  title={secArticle.title} category={secArticle.category} />
+                </Link>
               ))}           
             </div>
           ))}
