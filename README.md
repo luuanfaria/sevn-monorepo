@@ -1,5 +1,3 @@
----
-
 # Sevn Monorepo
 
 Este é um repositório monorepo que contém dois pacotes: `web` e `server`.
@@ -53,4 +51,3 @@ git clone https://github.com/luuanfaria/sevn-monorepo.git
 cd sevn-monorepo
 pnpm install
 ```
----
