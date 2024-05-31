@@ -1,12 +1,12 @@
 interface Props {
-  category: 'economy' | 'education' | 'diversity' | 'default';
+  category: 'economia' | 'educação' | 'diversidade' | 'default';
   text: string;
 }
 
 const categoryColors: Record<Props['category'], string> = {
-  economy: '#ff2d2d',
-  education: '#24538b',
-  diversity: '#248b28',
+  economia: '#ff2d2d',
+  educação: '#24538b',
+  diversidade: '#248b28',
   default: '#000',
 };
 

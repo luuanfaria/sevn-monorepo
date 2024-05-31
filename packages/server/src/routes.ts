@@ -3,8 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const routes = express.Router()
 
-const readJSONFile = (filename) => {
-  const filepath = path.join(__dirname, 'data', filename);
+const readJSONFile = (filename: string): any => {
+  const filepath = path.join(__dirname, 'mocks', filename);
   return JSON.parse(fs.readFileSync(filepath, 'utf8'));
 };
 
@@ -20,12 +20,15 @@ routes.get('/api/secondary-articles', (req, res) => {
 
 routes.get('/api/articles/:id', (req, res) => {
   const articleId = req.params.id;
-  const articleDetails = readJSONFile('articleDetails.json');
+  const articleDetails = readJSONFile('mainArticles.json');
   const article = articleDetails[articleId];
 
   if (article) {
+    console.log(article)
     res.json(article)
   } else {
+    console.log("Erro")
+
     res.status(404).send('Notícia não encontrada');
   }
 })

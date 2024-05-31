@@ -1,5 +1,10 @@
 [
-  { "id": 1, "text": "Quem não tiver valores a receber poderá ter nas próximas fases, diz BC", "category": "economy" },
-  { "id": 2, "text": "Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização", "category": "education" },
-  { "id": 3, "text": "Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje", "category": "diversity" }
+  { "id": 1, "title": "Quem não tiver valores a receber poderá ter nas próximas fases, diz BC", "category": "economia" },
+  { "id": 2, "title": "Quem não tiver valores a receber poderá ter nas próximas fases, diz BC", "category": "economia" },
+  { "id": 3, "title": "Quem não tiver valores a receber poderá ter nas próximas fases, diz BC", "category": "economia" },
+  { "id": 4, "title": "Quem não tiver valores a receber poderá ter nas próximas fases, diz BC", "category": "economia" },
+  { "id": 5, "title": "Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização", "category": "educação" },
+  { "id": 6, "title": "Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização", "category": "educação" },
+  { "id": 7, "title": "Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje", "category": "diversidade" },
+  { "id": 8, "title": "Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje", "category": "diversidade" }
 ]

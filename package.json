@@ -5,12 +5,17 @@
   "main": "index.js",
   "private": true,
   "workspaces": [
-      "packages/*"
+    "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter @sevn-monorepo/web dev"
+    "web": "pnpm --filter @sevn-monorepo/web dev",
+    "server": "pnpm --filter @sevn-monorepo/server dev",
+    "start:all": "concurrently \"pnpm dev\" \"pnpm server\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

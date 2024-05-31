@@ -10,15 +10,15 @@ import styles from './Home.module.scss'
 interface Article {
   id: number;
   title: string;
-  category: 'economy' | 'education' | 'diversity';
+  category: 'economia' | 'educação' | 'diversidade';
   description: string;
-  image?: string;
+  image: string;
 }
 
 interface SecondaryArticle {
   id: number;
-  text: string;
-  category: 'economy' | 'education' | 'diversity';
+  title: string;
+  category: 'economia' | 'educação' | 'diversidade';
 }
 
 export default function Home() {
@@ -27,13 +27,13 @@ export default function Home() {
 
   useEffect(() => {
     const fetchMainArticles = async () => {
-      const response = await fetch('http://localhost:3001/api/main-articles');
+      const response = await fetch('http://localhost:3333/api/main-articles');
       const data = await response.json();
       setMainArticles(data);
     };
 
     const fetchSecondaryArticles = async () => {
-      const response = await fetch('http://localhost:3001/api/secondary-articles');
+      const response = await fetch('http://localhost:3333/api/secondary-articles');
       const data = await response.json();
       setSecondaryArticles(data);
     };
@@ -48,45 +48,37 @@ export default function Home() {
 
       <main className={styles.content}>
         <div className={styles.principal}>
-          <div className={styles.principalMain}>
-            <Category text='Economia' category='economy' />
-            <h1><Link href="/noticia">Quem não tiver valores a receber nesta etapa poderá ter nas próximas fases, diz BC</Link></h1>
-          </div>
+          {mainArticles.slice(0, 1).map((article) => (
+            <div key={article.id} className={styles.principalMain}>
+              <Category text={article.category} category={article.category} />
+              <h1><Link href={`/noticia/${article.id}`}>{article.title}</Link></h1>
+            </div>
+          ))}
 
           <div className={styles.bulletsContainer}>
             <div className={styles.bulletsPrincipal}>
-             <Bullet text="Quem não tiver valores a receber poderá ter nas próximas fases, diz BC" category="economy"/>
-             <Bullet text="Quem não tiver valores a receber poderá ter nas próximas fases, diz BC" category="economy"/>
-             <Bullet text="Quem não tiver valores a receber poderá ter nas próximas fases, diz BC" category="economy"/>
-             <Bullet text="Quem não tiver valores a receber poderá ter nas próximas fases, diz BC" category="economy"/>
+             {secondaryArticles.slice(0, 4).map((article) => (
+               <Bullet key={article.id} title={article.title} category={article.category} />
+             ))}
             </div>
           </div>
         </div>
 
         <div className={styles.secondary}>
-          <div className={styles.secondaryContainer}>
-            <Card 
-              title="Educação" 
-              description='Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização' 
-              image="https://s3-alpha-sig.figma.com/img/4860/b62c/5f89d5f732924bb3a0b37dccc69459e2?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PbfGRo6P6xPQ6HElaJgxR426OpWQTj~2N-e9mbLC9DFpuaWd~9Xg7LRE8GD76xfB3kx7M0VUl9j82emMFPy8KmUYebFZol6sEA1PCm1KXuwb658X7sXisn3EzzbSr-CGLydwlQNBOHpcmYxbW2tgdO7yAVKGD27zccJrjSxqeLYRdyl2OEcyK5EX119w8I0N~RqnKRBIYWcbvo5VrldhHj31FucwTGruKJq0xklhWZcBqcWGXYMU2aE9No2PymwRzOKD8DaQ2UgdqKrxN0cMhm~eknmfcSwT2cChnc~eY9iI00~AmA4Tr9y~h7SQx9rjJuFscyIu4eW234NwmqdTeg__"
-              category='education' 
-            />
+          {mainArticles.slice(1, 3).map((article) => (
+            <div key={article.id} className={styles.secondaryContainer}>
+              <Card 
+                title={article.category} 
+                description={article.description} 
+                image={article.image}
+                category={article.category} 
+              />
 
-            <Bullet text="Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização" category="education" />
-            <Bullet text="Datafolha: Após ensino remoto, 76% precisam de reforço na alfabetização" category="education" />
-          </div>
-
-          <div className={styles.secondaryContainer}>
-            <Card 
-              title="Diversidade" 
-              description='Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje' 
-              image="https://s3-alpha-sig.figma.com/img/21a6/9033/8c49079302a6944094664e80d3160112?Expires=1717977600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=T3R7-kgCHUslEEQ5KCmdTiKC6RqJ1bkrrLHnYFW7wf7JF3Aubnhm98IZYbKNOMijVXGCaDnoTmmCDZIiiNvBCtcNDZRBq30yjwbEimbbQTjwjvV9biOfn9hLnry9M3kJXOvKhZVqDlNgA8rPZNWbWeO0M1I3gqoFKxLjoq0zuq1Vt0dM-sM2wL6CBnoPzaBbutUW3fn3GjB46V2-oksib-3HspPGAHaThvhmeoG89kzVsyqnwrFnaxF8XIg6K5FzC9DvGm43MH6RveawVrLztyKuAI~W7XN3lUjJwzEtnucQERHRc0v8S2Uba7x4c0CaF3lZGC67iKq4QKaCoSeA3g__" 
-              category='diversity' 
-            />
-
-            <Bullet text="Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje" category="diversity" />
-            <Bullet text="Lotomania: com prêmio de R$ 5 milhões, veja os números sorteados hoje" category="diversity" />
-          </div>
+              {secondaryArticles.filter((secArticle) => secArticle.category === article.category).slice(0, 2).map((secArticle) => (
+                <Bullet key={secArticle.id} title={secArticle.title} category={secArticle.category} />
+              ))}           
+            </div>
+          ))}
         </div>
       </main>
     </section>

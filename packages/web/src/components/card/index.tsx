@@ -6,7 +6,7 @@ interface Props {
   title: string
   description: string
   image: string
-  category: 'economy' | 'education' | 'diversity' | 'default';
+  category: 'economia' | 'educação' | 'diversidade' | 'default';
 }
 
 export function Card({ title, description, image, category = 'default' }: Props) {
