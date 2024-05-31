@@ -1,0 +1,60 @@
+.container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 150px;
+  padding-right: 150px;
+
+  @media screen and (max-width: 719px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 84px;
+  margin-bottom: 64px;
+  gap: 20px;
+}
+
+.header {
+
+  & .title {
+    margin-top: 0;
+    font-size: 58px;
+    margin-right: 20px;
+    text-align: left;
+
+    @media screen and (max-width: 719px) {
+      font-size: 48px;
+    }
+  }
+
+  & .description {
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  & .publishedDate {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+    opacity: 20%;
+    text-align: left;
+  }
+}
+
+.text {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000;
+  white-space: pre-wrap;
+}

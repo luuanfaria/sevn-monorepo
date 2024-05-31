@@ -6,6 +6,12 @@
   align-items: center;
   justify-content: center;
   height: 190px;
+  max-height: 190px;
+  min-height: 190px;
+
+  :hover {
+    cursor: pointer;
+  }
 }
 
 .title {
