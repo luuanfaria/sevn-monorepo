@@ -59,6 +59,6 @@ pnpm install
 Crie um arquivo .env.local na raiz do projeto com o seguinte conteúdo:
 
 ```bash
-API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
