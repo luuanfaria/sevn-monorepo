@@ -9,9 +9,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://sevn-monorepo-web.vercel.app'
 ];
-
-const corsOptions = {
-  origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -20,8 +19,9 @@ const corsOptions = {
   }
 };
 
-app.use(cors(corsOptions))
-app.use(express.json())
+app.use(cors(corsOptions));
+app.use(express.json());
+app.options('*', cors(corsOptions));
 app.use(routes)
 
 app.listen(3333, () => {
