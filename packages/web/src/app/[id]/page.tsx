@@ -1,30 +1,25 @@
 'use client'
-import { Category } from "@/components/ category";
-import { Adversiting } from "../../components/adversiting";
-import styles from './Noticia.module.scss';
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { api } from "@/data/api";
+import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 
-interface Article {
-  id: number;
-  category: 'economia' | 'educação' | 'diversidade';
-  title: string;
-  subTitle: string;
-  publishedAt: string;
-  content: string;
-}
+import { Category } from "@/components/ category"
+import { Adversiting } from "../../components/adversiting"
 
-export default function Noticia() {
+import { fetchArticleById } from "../api/articles"
+
+import { FullArticle } from "@/types/articles"
+
+import styles from '@/styles/Article.module.scss';
+
+export default function Article() {
   const path = usePathname()
   const id = path[1]
-  const [article, setArticle] = useState<Article | null>(null);
+  const [article, setArticle] = useState<FullArticle | null>(null);
 
   useEffect(() => {
     if (id) {
       const fetchArticle = async () => {
-        const response = await api(`/articles/${id}`)
-        const data = await response.json()
+        const data = await fetchArticleById(id)
         setArticle(data);
       }
 

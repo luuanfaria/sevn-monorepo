@@ -1,46 +1,31 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+
 import { Bullet } from '../../components/bullet'
 import { Card } from '../../components/card'
 import { Adversiting } from '@/components/adversiting'
 import { Category } from '@/components/ category'
-import styles from './Home.module.scss'
-import { api } from '@/data/api'
 
-interface Article {
-  id: number;
-  title: string;
-  category: 'economia' | 'educação' | 'diversidade';
-  description: string;
-  image: string;
-}
+import { fetchMainArticles } from '../api/main-articles'
+import { fetchSecondaryArticles } from '../api/secondary-articles'
+import { Article, SecondaryArticle } from '@/types/articles'
 
-interface SecondaryArticle {
-  id: number;
-  title: string;
-  category: 'economia' | 'educação' | 'diversidade';
-}
+import styles from '@/styles/Home.module.scss'
 
 export default function Home() {
   const [mainArticles, setMainArticles] = useState<Article[]>([])
   const [secondaryArticles, setSecondaryArticles] = useState<SecondaryArticle[]>([])
 
   useEffect(() => {
-    const fetchMainArticles = async () => {
-      const response = await api('/main-articles');
-      const data = await response.json();
-      setMainArticles(data);
-    };
+    const fetchData = async () => {
+      const mainData = await fetchMainArticles()
+      const secondaryData = await fetchSecondaryArticles()
+      setMainArticles(mainData)
+      setSecondaryArticles(secondaryData)
+    }
 
-    const fetchSecondaryArticles = async () => {
-      const response = await api('/secondary-articles');
-      const data = await response.json();
-      setSecondaryArticles(data);
-    };
-
-    fetchMainArticles();
-    fetchSecondaryArticles();
+    fetchData()
   }, [])
 
   return (
