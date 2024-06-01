@@ -51,3 +51,14 @@ git clone https://github.com/luuanfaria/sevn-monorepo.git
 cd sevn-monorepo
 pnpm install
 ```
+
+### Configuração de Variáveis de Ambiente
+
+#### Desenvolvimento
+
+Crie um arquivo .env.local na raiz do projeto com o seguinte conteúdo:
+
+```bash
+API_URL=http://localhost:3000
+```
+
