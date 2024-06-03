@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "src/index.ts"
-    }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",
